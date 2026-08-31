@@ -1,0 +1,1021 @@
+/* =========================================================
+   TINDIG-CEMDS — Campaign Website Stylesheet
+   Kasama ka! KABALYEROS
+   ========================================================= */
+
+:root {
+    --primary-red: #C1121F;
+    --dark-red: #8F0D17;
+    --light-red: #FDE8E8;
+    --white: #FFFFFF;
+    --off-white: #F8F8F8;
+    --dark: #171717;
+    --gray: #666666;
+    --border: #E5E5E5;
+
+    --font-display: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --section-py: 6rem;
+    --section-py-sm: 3.5rem;
+    --radius: 14px;
+    --shadow-soft: 0 10px 30px rgba(23, 23, 23, 0.06);
+    --shadow-strong: 0 20px 45px rgba(143, 13, 23, 0.18);
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark);
+    background-color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+}
+
+a { text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+::selection {
+    background: var(--primary-red);
+    color: var(--white);
+}
+
+:focus-visible {
+    outline: 3px solid var(--primary-red);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================================
+   Signature motif: the "chevron rise" — a repeated upward
+   chevron mark ( ^ ) that stands in for "TINDIG" (to rise,
+   to stand) and doubles as a nod to the Kabalyero (knight)
+   sash / heraldic mark used across eyebrows and dividers.
+   ========================================================= */
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+}
+
+.eyebrow::before {
+    content: "^ ^ ^";
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    color: var(--primary-red);
+    opacity: 0.75;
+}
+
+.chevron-rule {
+    width: 64px;
+    height: 3px;
+    background: var(--primary-red);
+    position: relative;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.chevron-rule--left { margin: 0; }
+
+/* =========================================================
+   Utility / layout helpers
+   ========================================================= */
+
+.section {
+    padding: var(--section-py) 0;
+}
+
+@media (max-width: 767.98px) {
+    .section { padding: var(--section-py-sm) 0; }
+}
+
+.section-tint {
+    background-color: var(--off-white);
+}
+
+.section-heading {
+    font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+}
+
+.section-lead {
+    color: var(--gray);
+    font-size: 1.05rem;
+    max-width: 640px;
+}
+
+.text-primary-red { color: var(--primary-red) !important; }
+.bg-light-red { background-color: var(--light-red); }
+
+/* Buttons */
+.btn-campaign {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    padding: 0.85rem 1.9rem;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-campaign-red {
+    background-color: var(--primary-red);
+    color: var(--white);
+    box-shadow: var(--shadow-strong);
+}
+
+.btn-campaign-red:hover {
+    background-color: var(--dark-red);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-campaign-outline {
+    background-color: transparent;
+    color: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.btn-campaign-outline:hover {
+    background-color: var(--primary-red);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-campaign-white {
+    background-color: var(--white);
+    color: var(--primary-red);
+}
+
+.btn-campaign-white:hover {
+    background-color: var(--dark);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   Navbar
+   ========================================================= */
+
+.navbar-campaign {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 0 var(--border);
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+}
+
+.navbar-brand-campaign {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--dark) !important;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.navbar-brand-campaign .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.navbar-campaign .nav-link {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin: 0 0.45rem;
+    position: relative;
+    padding: 0.5rem 0.2rem !important;
+}
+
+.navbar-campaign .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: var(--primary-red);
+    transition: width 0.25s ease;
+}
+
+.navbar-campaign .nav-link:hover::after,
+.navbar-campaign .nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-campaign .nav-link.active {
+    color: var(--primary-red);
+}
+
+.nav-cta {
+    margin-left: 0.75rem;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-campaign .nav-link { margin: 0.15rem 0; }
+    .nav-cta { margin-left: 0; margin-top: 0.6rem; width: 100%; }
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+
+.hero {
+    padding: 5.5rem 0 4.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -140px;
+    right: -140px;
+    width: 420px;
+    height: 420px;
+    background: var(--light-red);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero .container { position: relative; z-index: 1; }
+
+.hero-kicker {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.03;
+    margin-bottom: 0.6rem;
+}
+
+.hero-tagline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+    color: var(--primary-red);
+    margin-bottom: 1.4rem;
+}
+
+.hero-sub {
+    color: var(--gray);
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin-bottom: 2.2rem;
+}
+
+.hero-actions .btn-campaign { margin-right: 0.75rem; margin-bottom: 0.75rem; }
+
+.hero-visual {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--primary-red), var(--dark-red));
+    min-height: 380px;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: var(--shadow-strong);
+}
+
+.hero-visual .hero-visual-mark {
+    font-family: var(--font-display);
+    color: rgba(255,255,255,0.16);
+    font-weight: 800;
+    font-size: 9rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    white-space: nowrap;
+}
+
+.hero-visual-caption {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    padding: 1.75rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+}
+
+.hero-visual-caption small {
+    display: block;
+    font-weight: 500;
+    opacity: 0.85;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 991.98px) {
+    .hero-visual { min-height: 260px; margin-top: 2.5rem; }
+    .hero-visual .hero-visual-mark { font-size: 5rem; }
+}
+
+/* Reveal-on-scroll (paired with IntersectionObserver in script.js) */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   Intro / value grid
+   ========================================================= */
+
+.value-check-list { list-style: none; padding: 0; margin: 0; }
+
+.value-check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.value-check-list li:last-child { border-bottom: none; }
+
+.value-check-icon {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--light-red);
+    color: var(--primary-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-family: var(--font-display);
+}
+
+.highlight-callout {
+    border-left: 4px solid var(--primary-red);
+    background: var(--light-red);
+    padding: 1.5rem 1.75rem;
+    border-radius: 0 12px 12px 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--dark-red);
+    margin-top: 1.75rem;
+}
+
+/* =========================================================
+   Candidate cards
+   ========================================================= */
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--gray);
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover { border-color: var(--primary-red); color: var(--primary-red); }
+
+.filter-btn.active {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: var(--white);
+}
+
+.candidate-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.candidate-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-soft);
+}
+
+.candidate-photo-wrap {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: var(--light-red);
+    overflow: hidden;
+}
+
+.candidate-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.candidate-position-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--primary-red);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+}
+
+.candidate-body {
+    padding: 1.25rem 1.35rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.candidate-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.15rem;
+}
+
+.candidate-position {
+    color: var(--primary-red);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.65rem;
+}
+
+.candidate-intro {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 1.1rem;
+    flex-grow: 1;
+}
+
+.btn-profile {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--primary-red);
+    border: 2px solid var(--primary-red);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.btn-profile:hover { background: var(--primary-red); color: var(--white); }
+
+/* Candidate modal */
+.modal-candidate .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.modal-candidate .modal-header {
+    background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+    color: var(--white);
+    border: none;
+    padding: 1.5rem 1.75rem;
+}
+
+.modal-candidate .modal-header .btn-close { filter: invert(1); }
+
+.modal-candidate-photo {
+    width: 84px;
+    height: 84px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.5);
+}
+
+.modal-candidate .modal-body { padding: 1.75rem; }
+
+.modal-candidate dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary-red);
+    margin-top: 1.1rem;
+}
+
+.modal-candidate dt:first-child { margin-top: 0; }
+
+.modal-candidate dd {
+    color: var(--dark);
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   Credentials
+   ========================================================= */
+
+.stat-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: var(--radius);
+    background: var(--off-white);
+    height: 100%;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.4rem;
+    color: var(--primary-red);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-top: 0.4rem;
+    font-weight: 600;
+}
+
+.credential-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    height: 100%;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.credential-card:hover {
+    border-color: var(--primary-red);
+    transform: translateY(-4px);
+}
+
+.credential-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--light-red);
+    color: var(--primary-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 3px solid var(--light-red);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -2.4rem;
+    top: 0.2rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--primary-red);
+    border: 3px solid var(--light-red);
+}
+
+.timeline-year {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--primary-red);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   GPOA Accordion
+   ========================================================= */
+
+.accordion-campaign .accordion-item {
+    border: 1px solid var(--border);
+    border-radius: 12px !important;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.accordion-campaign .accordion-button {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--dark);
+    background: var(--white);
+    padding: 1.25rem 1.5rem;
+}
+
+.accordion-campaign .accordion-button:not(.collapsed) {
+    color: var(--primary-red);
+    background: var(--light-red);
+    box-shadow: none;
+}
+
+.accordion-campaign .accordion-button:focus { box-shadow: none; }
+
+.accordion-campaign .accordion-button::after {
+    filter: none;
+}
+
+.accordion-campaign .accordion-body { padding: 1.5rem; }
+
+.gpoa-program {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border);
+}
+
+.gpoa-program:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.gpoa-program h5 {
+    font-size: 1rem;
+    color: var(--dark-red);
+    margin-bottom: 0.6rem;
+}
+
+.gpoa-field-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    margin-bottom: 0.15rem;
+}
+
+.gpoa-field { margin-bottom: 0.85rem; }
+.gpoa-field:last-child { margin-bottom: 0; }
+
+/* =========================================================
+   Pinaglalaban advocacy cards
+   ========================================================= */
+
+.advocacy-card {
+    border-radius: var(--radius);
+    padding: 2.25rem 2rem;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.advocacy-card:hover { transform: translateY(-6px); }
+
+.advocacy-card.card-white {
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+
+.advocacy-card.card-white:hover { box-shadow: var(--shadow-soft); }
+
+.advocacy-card.card-red {
+    background: linear-gradient(150deg, var(--primary-red), var(--dark-red));
+    color: var(--white);
+}
+
+.advocacy-card.card-red:hover { box-shadow: var(--shadow-strong); }
+
+.advocacy-card.card-red .advocacy-title { color: var(--white); }
+.advocacy-card.card-red p { color: rgba(255,255,255,0.9); }
+
+.advocacy-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    margin-bottom: 0.75rem;
+}
+
+.advocacy-title {
+    font-size: 1.25rem;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+}
+
+/* =========================================================
+   Values
+   ========================================================= */
+
+.value-card {
+    text-align: center;
+    padding: 2rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    height: 100%;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-red);
+}
+
+.value-card .value-mark {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--light-red);
+    color: var(--primary-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.value-card h5 {
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.value-card p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   Vote CTA band
+   ========================================================= */
+
+.vote-band {
+    background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.vote-band h2 {
+    color: var(--white);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.vote-band p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.1rem;
+    max-width: 620px;
+    margin: 0 auto 0.5rem;
+}
+
+.vote-band .btn-campaign { margin-top: 1.75rem; }
+
+/* Campaign statement */
+.statement-section {
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.statement-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    max-width: 780px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.4;
+    color: var(--dark);
+}
+
+.statement-brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--primary-red);
+}
+
+.statement-tagline {
+    font-weight: 600;
+    color: var(--dark-red);
+    margin-top: 0.25rem;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
+.footer-campaign {
+    background: var(--dark);
+    color: rgba(255,255,255,0.75);
+    padding: 4rem 0 2rem;
+}
+
+.footer-campaign .footer-brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+}
+
+.footer-campaign .footer-tagline {
+    color: var(--primary-red);
+    font-weight: 600;
+    font-family: var(--font-display);
+    margin-bottom: 1rem;
+}
+
+.footer-campaign h6 {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.1rem;
+}
+
+.footer-campaign ul { list-style: none; padding: 0; margin: 0; }
+
+.footer-campaign ul li { margin-bottom: 0.6rem; }
+
+.footer-campaign a {
+    color: rgba(255,255,255,0.75);
+    transition: color 0.2s ease;
+}
+
+.footer-campaign a:hover { color: var(--white); }
+
+.footer-social {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.footer-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+.footer-social a:hover { background: var(--primary-red); }
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+}
+
+/* =========================================================
+   Back to top
+   ========================================================= */
+
+.back-to-top {
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary-red);
+    color: var(--white);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-strong);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover { background: var(--dark-red); }
+
+/* =========================================================
+   Page header (interior pages)
+   ========================================================= */
+
+.page-header {
+    background: var(--off-white);
+    padding: 3.5rem 0 3rem;
+    text-align: center;
+}
+
+.page-header h1 { font-size: clamp(2rem, 4vw, 2.9rem); }
+
+.page-header p {
+    color: var(--gray);
+    max-width: 560px;
+    margin: 0.75rem auto 0;
+}
+
+/* About page */
+.about-photo {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+/* =========================================================
+   Responsive tweaks
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .btn-campaign { width: 100%; }
+    .hero-actions .btn-campaign { margin-right: 0; }
+    .advocacy-card { padding: 1.75rem 1.5rem; }
+}
