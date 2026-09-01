@@ -15,8 +15,7 @@ const NAV_LINKS = [
     { label: "Candidates", href: "candidates.html" },
     { label: "Credentials", href: "credentials.html" },
     { label: "GPOA", href: "gpoa.html" },
-    { label: "Pinaglalaban", href: "pinaglalaban.html" },
-    { label: "About Us", href: "about.html" }
+    { label: "Pinaglalaban", href: "pinaglalaban.html" }
 ];
 
 function renderNavbar() {
@@ -107,67 +106,59 @@ function renderFooter() {
 const candidates = [
     {
         id: "anne",
-        name: "Anne",
+        name: "Anne Jasmine Biaton",
         position: "Senator",
         category: "senators",
         image: "assets/images/ANNE.png",
         intro: "Handang makinig, magsulong, at manindigan para sa bawat Kabalyeros.",
-        motto: "Para sa bawat Kabalyeros.",
-        bio: "Si Anne ay kandidato sa pagka-senador ng TINDIG-CEMDS na naninindigan para sa mas bukas, mas maayos, at mas estudyanteng serbisyo.",
-        education: "CEMDS student leader.",
-        experience: "Aktibong nakikilahok sa mga gawaing pang-mag-aaral at kampanyang nakatuon sa kapakanan ng Kabalyeros.",
-        organizations: "TINDIG-CEMDS.",
-        skills: "Pakikinig, pakikipag-ugnayan, organisasyon, at student advocacy.",
-        achievements: "Patuloy na nakikibahagi sa mga gawaing nagtataguyod ng representasyon ng estudyante.",
-        vision: "Isang konsehong may tunay na konsultasyon, malinaw na aksyon, at pananagutang ramdam ng bawat Kabalyeros."
+        highlights: [
+            "Research Leader and One-Act Play Production Director / Scriptwriter.",
+            "Officer of the Language Enthusiasts and Advocates Club and Circle of Young Science Enthusiasts.",
+            "Recognized for leadership and club service in senior high school.",
+            "Led and joined outreach, community service, and student leadership activities."
+        ]
     },
     {
         id: "caleb",
-        name: "Caleb",
+        name: "Caleb Cuyom",
         position: "Senator",
         category: "senators",
         image: "assets/images/CALEB.png",
         intro: "Kakampi ng estudyante sa malinaw na programa at makabuluhang aksyon.",
-        motto: "Nakikinig bago kumikilos.",
-        bio: "Si Caleb ay kandidato sa pagka-senador ng TINDIG-CEMDS na nakatuon sa mas inklusibong representasyon at serbisyong may direksyon.",
-        education: "CEMDS student leader.",
-        experience: "Aktibong nakikilahok sa student-centered initiatives at mga gawaing pangkomunidad.",
-        organizations: "TINDIG-CEMDS.",
-        skills: "Leadership, communication, collaboration, at project support.",
-        achievements: "Nakikibahagi sa mga gawaing nagpapalakas ng boses at partisipasyon ng estudyante.",
-        vision: "Isang konsehong may bukas na komunikasyon at mga programang tugon sa tunay na pangangailangan ng estudyante."
+        highlights: [
+            "Vice Chairperson of Akbayan Youth - Cavite Chapter.",
+            "Co-Founder and Executive Adviser of LAYAG Kabataan NGO - Province of Cavite.",
+            "Student leader, organizer, speaker, and advocacy awardee.",
+            "Headed gender equality and education access initiatives."
+        ]
     },
     {
         id: "emilio",
-        name: "Emilio",
+        name: "Emilio III Sumilong",
         position: "Senator",
         category: "senators",
         image: "assets/images/EMILIO.png",
         intro: "Naninindigan para sa transparency, accountability, at tunay na serbisyo.",
-        motto: "Malinaw na proseso, tapat na pamamahala.",
-        bio: "Si Emilio ay kandidato sa pagka-senador ng TINDIG-CEMDS na nagsusulong ng mas responsable at mas malapit na konseho.",
-        education: "CEMDS student leader.",
-        experience: "Nakikilahok sa mga proyekto at talakayang nakasentro sa kapakanan ng mag-aaral.",
-        organizations: "TINDIG-CEMDS.",
-        skills: "Documentation, communication, planning, at advocacy work.",
-        achievements: "Patuloy na tumutulong sa mga gawaing nagpapalakas ng pananagutan at representasyon.",
-        vision: "Isang konsehong malinaw ang proseso at bukas ang serbisyo para sa bawat Kabalyeros."
+        highlights: [
+            "Secretary General roles in finance, audit, and constitutional amendment committees.",
+            "University First Year Student Council representative and committee vice chairperson.",
+            "Advocacy Head of Akbayan Youth - Cavite and partnerships lead for LoveYourself.",
+            "Recognized for honors, volunteer work, project pitching, and youth parliament work."
+        ]
     },
     {
         id: "julie",
-        name: "Julie",
+        name: "Julie Ann Creus",
         position: "Senator",
         category: "senators",
         image: "assets/images/JULIE.png",
         intro: "Boses ng estudyanteng handang kumilos kasama ang komunidad.",
-        motto: "Bawat piso, may paliwanag.",
-        bio: "Si Julie ay kandidato sa pagka-senador ng TINDIG-CEMDS na naniniwala sa makatao, malinaw, at kolektibong pagkilos.",
-        education: "CEMDS student leader.",
-        experience: "Aktibong sumusuporta sa mga gawaing pang-estudyante at kampanyang may malasakit sa komunidad.",
-        organizations: "TINDIG-CEMDS.",
-        skills: "Community building, coordination, communication, at student support.",
-        achievements: "Patuloy na nakikilahok sa mga inisyatibang naglalapit ng konseho sa estudyante.",
-        vision: "Isang student council na kasama ang estudyante sa pagpaplano, pagpapatupad, at pananagutan."
+        highlights: [
+            "Classroom Vice President, SSLG representative, and student government secretariat member.",
+            "With Honors achiever from Grades 9 to 12.",
+            "Awarded for organization contribution and business and finance work immersion.",
+            "Student journalist, leadership training participant, and decorated swimming athlete."
+        ]
     }
 ];
 
@@ -211,6 +202,20 @@ function renderCandidates(filter = "all") {
     initScrollReveal();
 }
 
+function credentialListHtml(items) {
+    if (!items || !items.length) return "";
+
+    return `<ul class="modal-credential-list">${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+}
+
+function credentialSectionHtml(title, items) {
+    if (!items || !items.length) return "";
+
+    return `
+            <dt>${title}</dt>
+            <dd>${credentialListHtml(items)}</dd>`;
+}
+
 function openCandidateModal(candidateId) {
     const candidate = candidates.find((c) => c.id === candidateId);
     if (!candidate) return;
@@ -230,29 +235,7 @@ function openCandidateModal(candidateId) {
 
     modalBody.innerHTML = `
         <dl>
-            <dt>Motto</dt>
-            <dd>&ldquo;${candidate.motto}&rdquo;</dd>
-
-            <dt>Biography</dt>
-            <dd>${candidate.bio}</dd>
-
-            <dt>Educational Background</dt>
-            <dd>${candidate.education}</dd>
-
-            <dt>Leadership Experience</dt>
-            <dd>${candidate.experience}</dd>
-
-            <dt>Organizations</dt>
-            <dd>${candidate.organizations}</dd>
-
-            <dt>Skills</dt>
-            <dd>${candidate.skills}</dd>
-
-            <dt>Achievements</dt>
-            <dd>${candidate.achievements}</dd>
-
-            <dt>Vision</dt>
-            <dd>${candidate.vision}</dd>
+            ${credentialSectionHtml("Credential Highlights", candidate.highlights)}
         </dl>`;
 
     const modalEl = document.getElementById("candidateModal");
