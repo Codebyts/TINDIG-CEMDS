@@ -85,6 +85,10 @@ function renderFooter() {
                     <div class="col-lg-3">
                         <h6>Kasama Ka</h6>
                         <p class="small mb-0">Para sa estudyante. Kasama ang estudyante.</p>
+                        <div class="visitor-counter" aria-live="polite">
+                            <span id="visitorCount">0</span>
+                            <span>Site Visits</span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -299,12 +303,49 @@ function initMobileNavClose() {
 }
 
 /* ---------------------------------------------------------
-   7. Init
+   7. Visitor counter
+   --------------------------------------------------------- */
+
+async function initVisitorCounter() {
+    const counter = document.getElementById("visitorCount");
+    const storageKey = "tindigSiteVisits";
+    const sessionKey = "tindigVisitCounted";
+    const namespace = "tindig-cemds";
+    const key = "site-visits";
+    const action = sessionStorage.getItem(sessionKey) ? "get" : "hit";
+    const endpoint = `https://abacus.jasoncameron.dev/${action}/${namespace}/${key}`;
+
+    try {
+        const response = await fetch(endpoint, { cache: "no-store" });
+        if (!response.ok) throw new Error(`Counter request failed: ${response.status}`);
+
+        const data = await response.json();
+        const visits = Number(data.value) || 0;
+
+        localStorage.setItem(storageKey, String(visits));
+        sessionStorage.setItem(sessionKey, "true");
+
+        if (counter) {
+            counter.textContent = visits.toLocaleString();
+        }
+    } catch (error) {
+        const fallbackVisits = Number(localStorage.getItem(storageKey)) || 0;
+
+        if (counter) {
+            counter.textContent = fallbackVisits.toLocaleString();
+            counter.closest(".visitor-counter")?.classList.add("visitor-counter-offline");
+        }
+    }
+}
+
+/* ---------------------------------------------------------
+   8. Init
    --------------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNavbar();
     renderFooter();
+    initVisitorCounter();
 
     if (document.getElementById("candidates-grid")) {
         renderCandidates();

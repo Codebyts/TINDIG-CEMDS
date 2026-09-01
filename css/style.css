@@ -946,6 +946,30 @@ img { max-width: 100%; display: block; }
 
 .footer-campaign a:hover { color: var(--white); }
 
+.visitor-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 999px;
+    color: rgba(255,255,255,0.72);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.visitor-counter span:first-child {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.visitor-counter-offline {
+    opacity: 0.72;
+}
+
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.12);
     margin-top: 3rem;
