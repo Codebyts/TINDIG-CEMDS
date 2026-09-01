@@ -69,11 +69,6 @@ function renderFooter() {
                         <div class="footer-brand">TINDIG-CEMDS</div>
                         <div class="footer-tagline">Kasama ka! KABALYEROS</div>
                         <p class="small mb-4" style="max-width: 320px;">Isang konsehong nakikinig, kumikilos, at naninindigan para sa bawat Kabalyeros.</p>
-                        <div class="footer-social">
-                            <a href="#" aria-label="Facebook">FB</a>
-                            <a href="#" aria-label="Instagram">IG</a>
-                            <a href="#" aria-label="X / Twitter">X</a>
-                        </div>
                     </div>
                     <div class="col-6 col-lg-2">
                         <h6>Navigate</h6>
@@ -108,7 +103,6 @@ const candidates = [
         id: "anne",
         name: "Anne Jasmine Biaton",
         position: "Senator",
-        category: "senators",
         image: "assets/images/ANNE.png",
         intro: "Handang makinig, magsulong, at manindigan para sa bawat Kabalyeros.",
         highlights: [
@@ -122,7 +116,6 @@ const candidates = [
         id: "caleb",
         name: "Caleb Cuyom",
         position: "Senator",
-        category: "senators",
         image: "assets/images/CALEB.png",
         intro: "Kakampi ng estudyante sa malinaw na programa at makabuluhang aksyon.",
         highlights: [
@@ -136,7 +129,6 @@ const candidates = [
         id: "emilio",
         name: "Emilio III Sumilong",
         position: "Senator",
-        category: "senators",
         image: "assets/images/EMILIO.png",
         intro: "Naninindigan para sa transparency, accountability, at tunay na serbisyo.",
         highlights: [
@@ -150,7 +142,6 @@ const candidates = [
         id: "julie",
         name: "Julie Ann Creus",
         position: "Senator",
-        category: "senators",
         image: "assets/images/JULIE.png",
         intro: "Boses ng estudyanteng handang kumilos kasama ang komunidad.",
         highlights: [
@@ -168,7 +159,7 @@ const candidates = [
 
 function candidateCardHtml(candidate) {
     return `
-        <div class="col-sm-6 col-lg-4 col-xl-3 candidate-col" data-category="${candidate.category}">
+        <div class="col-sm-6 col-lg-4 col-xl-3 candidate-col">
             <div class="candidate-card reveal">
                 <div class="candidate-photo-wrap">
                     <span class="candidate-position-tag">${candidate.position}</span>
@@ -185,15 +176,11 @@ function candidateCardHtml(candidate) {
         </div>`;
 }
 
-function renderCandidates(filter = "all") {
+function renderCandidates() {
     const grid = document.getElementById("candidates-grid");
     if (!grid) return;
 
-    const filtered = filter === "all"
-        ? candidates
-        : candidates.filter((c) => c.category === filter);
-
-    grid.innerHTML = filtered.map(candidateCardHtml).join("");
+    grid.innerHTML = candidates.map(candidateCardHtml).join("");
 
     grid.querySelectorAll(".btn-profile").forEach((btn) => {
         btn.addEventListener("click", () => openCandidateModal(btn.dataset.candidateId));
@@ -241,21 +228,6 @@ function openCandidateModal(candidateId) {
     const modalEl = document.getElementById("candidateModal");
     const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
     modal.show();
-}
-
-function initCandidateFilters() {
-    const filterBar = document.getElementById("candidate-filters");
-    if (!filterBar) return;
-
-    filterBar.addEventListener("click", (e) => {
-        const btn = e.target.closest(".filter-btn");
-        if (!btn) return;
-
-        filterBar.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        renderCandidates(btn.dataset.filter);
-    });
 }
 
 /* ---------------------------------------------------------
@@ -327,27 +299,7 @@ function initMobileNavClose() {
 }
 
 /* ---------------------------------------------------------
-   7. Smooth scrolling for in-page anchor links
-   --------------------------------------------------------- */
-
-function initSmoothScroll() {
-    document.addEventListener("click", (e) => {
-        const link = e.target.closest('a[href^="#"]');
-        if (!link) return;
-
-        const targetId = link.getAttribute("href");
-        if (targetId.length <= 1) return;
-
-        const target = document.querySelector(targetId);
-        if (!target) return;
-
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-}
-
-/* ---------------------------------------------------------
-   8. Init
+   7. Init
    --------------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -355,12 +307,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFooter();
 
     if (document.getElementById("candidates-grid")) {
-        renderCandidates("all");
-        initCandidateFilters();
+        renderCandidates();
     }
 
     initScrollReveal();
     initBackToTop();
     initMobileNavClose();
-    initSmoothScroll();
 });

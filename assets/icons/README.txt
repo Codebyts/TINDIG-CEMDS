@@ -1,1 +1,0 @@
-Place icon assets here.

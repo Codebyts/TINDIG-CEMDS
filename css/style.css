@@ -96,17 +96,6 @@ img { max-width: 100%; display: block; }
     opacity: 0.75;
 }
 
-.chevron-rule {
-    width: 64px;
-    height: 3px;
-    background: var(--primary-red);
-    position: relative;
-    margin: 0 auto;
-    border-radius: 2px;
-}
-
-.chevron-rule--left { margin: 0; }
-
 /* =========================================================
    Utility / layout helpers
    ========================================================= */
@@ -136,7 +125,6 @@ img { max-width: 100%; display: block; }
 }
 
 .text-primary-red { color: var(--primary-red) !important; }
-.bg-light-red { background-color: var(--light-red); }
 
 /* Buttons */
 .btn-campaign {
@@ -210,20 +198,6 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     gap: 0.6rem;
-}
-
-.navbar-brand-campaign .brand-mark {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1rem;
 }
 
 .navbar-campaign .nav-link {
@@ -682,42 +656,9 @@ img { max-width: 100%; display: block; }
     margin-bottom: 0;
 }
 
-.modal-credential-link {
-    color: var(--primary-red);
-    font-family: var(--font-display);
-    font-weight: 700;
-}
-
-.modal-credential-link:hover {
-    color: var(--dark-red);
-}
-
 /* =========================================================
    Credentials
    ========================================================= */
-
-.stat-card {
-    text-align: center;
-    padding: 2rem 1rem;
-    border-radius: var(--radius);
-    background: var(--off-white);
-    height: 100%;
-}
-
-.stat-number {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 2.4rem;
-    color: var(--primary-red);
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    color: var(--gray);
-    margin-top: 0.4rem;
-    font-weight: 600;
-}
 
 .credential-card {
     border: 1px solid var(--border);
@@ -794,40 +735,6 @@ img { max-width: 100%; display: block; }
     aspect-ratio: 3375 / 4219;
     object-fit: contain;
     background: var(--off-white);
-}
-
-/* Timeline */
-.timeline {
-    position: relative;
-    padding-left: 2rem;
-    border-left: 3px solid var(--light-red);
-}
-
-.timeline-item {
-    position: relative;
-    padding-bottom: 2rem;
-}
-
-.timeline-item:last-child { padding-bottom: 0; }
-
-.timeline-item::before {
-    content: "";
-    position: absolute;
-    left: -2.4rem;
-    top: 0.2rem;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--primary-red);
-    border: 3px solid var(--light-red);
-}
-
-.timeline-year {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--primary-red);
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
 }
 
 /* =========================================================
@@ -937,51 +844,6 @@ img { max-width: 100%; display: block; }
 }
 
 /* =========================================================
-   Values
-   ========================================================= */
-
-.value-card {
-    text-align: center;
-    padding: 2rem 1.25rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    height: 100%;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.value-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary-red);
-}
-
-.value-card .value-mark {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 1rem;
-    border-radius: 50%;
-    background: var(--light-red);
-    color: var(--primary-red);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.1rem;
-}
-
-.value-card h5 {
-    font-size: 1rem;
-    letter-spacing: 0.02em;
-    margin-bottom: 0.5rem;
-}
-
-.value-card p {
-    color: var(--gray);
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
-
-/* =========================================================
    Vote CTA band
    ========================================================= */
 
@@ -1084,24 +946,6 @@ img { max-width: 100%; display: block; }
 
 .footer-campaign a:hover { color: var(--white); }
 
-.footer-social {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.footer-social a {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-}
-
-.footer-social a:hover { background: var(--primary-red); }
-
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.12);
     margin-top: 3rem;
@@ -1161,13 +1005,6 @@ img { max-width: 100%; display: block; }
     color: var(--gray);
     max-width: 560px;
     margin: 0.75rem auto 0;
-}
-
-/* About page */
-.about-photo {
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
 }
 
 /* =========================================================
