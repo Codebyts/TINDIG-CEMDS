@@ -339,7 +339,39 @@ async function initVisitorCounter() {
 }
 
 /* ---------------------------------------------------------
-   8. Init
+   8. GPOA Image Modal Preview
+   --------------------------------------------------------- */
+
+function initGpoaImageModal() {
+    const modalEl = document.getElementById("gpoaImageModal");
+    if (!modalEl) return;
+
+    const modalImg = document.getElementById("gpoaModalImage");
+    const modalTitle = document.getElementById("gpoaImageModalLabel");
+    const modalDesc = document.getElementById("gpoaModalDesc");
+
+    document.querySelectorAll(".gpoa-image-wrap[data-bs-target='#gpoaImageModal']").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const src = trigger.getAttribute("data-img-src") || "";
+            const title = trigger.getAttribute("data-img-title") || "";
+            const desc = trigger.getAttribute("data-img-desc") || "";
+
+            if (modalImg) {
+                modalImg.src = src;
+                modalImg.alt = title;
+            }
+            if (modalTitle) {
+                modalTitle.textContent = title;
+            }
+            if (modalDesc) {
+                modalDesc.textContent = desc;
+            }
+        });
+    });
+}
+
+/* ---------------------------------------------------------
+   9. Init
    --------------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -351,7 +383,9 @@ document.addEventListener("DOMContentLoaded", () => {
         renderCandidates();
     }
 
+    initGpoaImageModal();
     initScrollReveal();
     initBackToTop();
     initMobileNavClose();
 });
+

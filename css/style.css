@@ -738,65 +738,219 @@ img { max-width: 100%; display: block; }
 }
 
 /* =========================================================
-   GPOA Accordion
+   GPOA Cards & Visual Showcase
    ========================================================= */
 
-.accordion-campaign .accordion-item {
+.gpoa-card {
     border: 1px solid var(--border);
-    border-radius: 12px !important;
+    border-radius: var(--radius);
+    background: var(--white);
     overflow: hidden;
-    margin-bottom: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.accordion-campaign .accordion-button {
+.gpoa-card:hover {
+    border-color: var(--primary-red);
+    box-shadow: var(--shadow-strong);
+    transform: translateY(-6px);
+}
+
+.gpoa-image-wrap {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--off-white);
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+
+.gpoa-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #FAFAFA;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.gpoa-card:hover .gpoa-image-wrap img {
+    transform: scale(1.03);
+}
+
+.gpoa-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(143, 13, 23, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.gpoa-image-wrap:hover .gpoa-image-overlay,
+.gpoa-card:hover .gpoa-image-overlay {
+    opacity: 1;
+}
+
+.gpoa-overlay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--white);
+    color: var(--primary-red);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.02rem;
-    color: var(--dark);
-    background: var(--white);
-    padding: 1.25rem 1.5rem;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+    transform: translateY(10px);
+    transition: transform 0.25s ease;
 }
 
-.accordion-campaign .accordion-button:not(.collapsed) {
+.gpoa-card:hover .gpoa-overlay-btn {
+    transform: translateY(0);
+}
+
+.gpoa-card-body {
+    padding: 1.6rem 1.6rem 1.8rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.gpoa-header-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.gpoa-agenda-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--primary-red);
     background: var(--light-red);
-    box-shadow: none;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
 }
 
-.accordion-campaign .accordion-button:focus { box-shadow: none; }
-
-.accordion-campaign .accordion-button::after {
-    filter: none;
+.gpoa-card-title {
+    font-size: clamp(1.3rem, 2vw, 1.55rem);
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+    font-family: var(--font-display);
+    font-weight: 800;
 }
 
-.accordion-campaign .accordion-body { padding: 1.5rem; }
-
-.gpoa-program {
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px dashed var(--border);
+.gpoa-statement {
+    font-size: 0.95rem;
+    color: var(--dark);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    background: var(--off-white);
+    border-left: 3px solid var(--primary-red);
+    padding: 0.85rem 1rem;
+    border-radius: 0 8px 8px 0;
 }
 
-.gpoa-program:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-.gpoa-program h5 {
-    font-size: 1rem;
-    color: var(--dark-red);
-    margin-bottom: 0.6rem;
-}
-
-.gpoa-field-label {
+.gpoa-points-title {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     color: var(--gray);
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.65rem;
 }
 
-.gpoa-field { margin-bottom: 0.85rem; }
-.gpoa-field:last-child { margin-bottom: 0; }
+.gpoa-points-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.gpoa-points-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.92rem;
+    color: var(--dark);
+    line-height: 1.5;
+}
+
+.gpoa-points-list li svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: var(--primary-red);
+}
+
+.gpoa-view-btn {
+    margin-top: auto;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font-size: 0.88rem;
+}
+
+/* GPOA Preview Modal */
+.modal-gpoa-preview .modal-content {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-gpoa-preview .modal-header {
+    background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+    color: var(--white);
+    padding: 1.2rem 1.6rem;
+    border-bottom: none;
+}
+
+.modal-gpoa-preview .modal-title {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.modal-gpoa-preview .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-gpoa-preview .modal-body {
+    padding: 1.75rem;
+    background: var(--white);
+}
+
+.gpoa-modal-image-wrap {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gpoa-modal-image-wrap img {
+    width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+}
 
 /* =========================================================
    Pinaglalaban advocacy cards
